@@ -1,16 +1,33 @@
 import React, { Component } from 'react'
 export default class App extends Component {
     state={
-        value:""
+        name:"",
+        password:""
     }
     handleclick=(e)=>
     {
-        this.setState({value:e.target.value.toUpperCase().substr(0,10)});//we can apply any function here.
+        if(e.target.name==="password")
+        {
+            const value=e.target.value.toUpperCase().substr(0,10);
+            this.setState({[e.target.name]:value});
+        }
+        else{
+            const value=e.target.value;
+            this.setState({[e.target.name]:value});
+        }
     }
     render() {
         return (
             <div>
-                <input type="text" value={this.state.value} onChange={this.handleclick}></input>
+                <form>
+                <label>
+                    Name:    <input type="text" value={this.state.name} name="name" onChange={this.handleclick}></input>
+                </label>
+                <br/><br/>
+                <label>
+                    Password:<input type="text" value={this.state.password} name="password" onChange={this.handleclick}></input>
+                </label>
+                </form>
             </div>
         )
     }
