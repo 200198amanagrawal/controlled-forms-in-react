@@ -16,10 +16,17 @@ export default class App extends Component {
             this.setState({[e.target.name]:value});
         }
     }
+    handlechange=(e)=>
+    {
+        console.log(e.target[0].value);
+        console.log(e.target[1].value);
+        console.log(e.target[2].value);
+        e.preventDefault();
+    }
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.handlechange}>
                 <label>
                     Name:    <input type="text" value={this.state.name} name="name" onChange={this.handleclick}></input>
                 </label>
@@ -27,6 +34,8 @@ export default class App extends Component {
                 <label>
                     Password:<input type="text" value={this.state.password} name="password" onChange={this.handleclick}></input>
                 </label>
+                <br/><br/>
+                <input type="submit" value="Submit"/>
                 </form>
             </div>
         )
